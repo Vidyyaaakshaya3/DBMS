@@ -1,0 +1,59 @@
+mysql> update student set fee=10000 where stdid=3;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++-------+---------+---------+-------+
+| stdid | stdname | stddept | fee   |
++-------+---------+---------+-------+
+|     1 | akshaya | cse     | 10000 |
+|     2 | teja    | ece     |  9000 |
+|     3 | nandini | cse     | 10000 |
++-------+---------+---------+-------+
+3 rows in set (0.00 sec)
+mysql> insert into student values(4,"vaishnavi","cse",100000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select*from student;
++-------+-----------+---------+--------+
+| stdid | stdname   | stddept | fee    |
++-------+-----------+---------+--------+
+|     1 | akshaya   | cse     |  10000 |
+|     2 | teja      | ece     |   9000 |
+|     3 | nandini   | cse     |  10000 |
+|     4 | vaishnavi | cse     | 100000 |
++-------+-----------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> delete from student where fee=100000;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select*from student;
++-------+---------+---------+-------+
+| stdid | stdname | stddept | fee   |
++-------+---------+---------+-------+
+|     1 | akshaya | cse     | 10000 |
+|     2 | teja    | ece     |  9000 |
+|     3 | nandini | cse     | 10000 |
++-------+---------+---------+-------+
+3 rows in set (0.00 sec)mysql>   select*from student;
++-------+---------+---------+-------+--------+
+| stdid | stdname | stddept | fee   | rollno |
++-------+---------+---------+-------+--------+
+|     1 | akshaya | cse     | 10000 |   NULL |
+|     2 | teja    | ece     |  9000 |   NULL |
+|     3 | nandini | cse     | 10000 |   NULL |
++-------+---------+---------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> update student set rollno=100 where stdid=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  update student set rollno=101 where stdid=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  update student set rollno=102 where stdid=3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
