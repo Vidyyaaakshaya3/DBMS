@@ -1,0 +1,133 @@
+mysql> create database simats;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use simats;
+Database changed
+mysql> create table student(student id int(10),name varchar,department varchar, rank int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id int(10),name varchar,department varchar, rank int)' at line 1
+mysql> create table student(stdid int(10),stdname varchar(20),stddept varchar(10),fee int(20));
+Query OK, 0 rows affected, 2 warnings (0.05 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| stdid   | int         | YES  |     | NULL    |       |
+| stdname | varchar(20) | YES  |     | NULL    |       |
+| stddept | varchar(10) | YES  |     | NULL    |       |
+| fee     | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.05 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_simats |
++------------------+
+| student          |
++------------------+
+1 row in set (0.02 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| stdid   | int         | YES  |     | NULL    |       |
+| stdname | varchar(20) | YES  |     | NULL    |       |
+| stddept | varchar(10) | YES  |     | NULL    |       |
+| fee     | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table faculty(facid int(10),facname varchar(20),facdept varchar(10),salary int(20));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> desc faculty;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facid   | int         | YES  |     | NULL    |       |
+| facname | varchar(20) | YES  |     | NULL    |       |
+| facdept | varchar(10) | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_simats |
++------------------+
+| faculty          |
+| student          |
++------------------+
+2 rows in set (0.00 sec)
+mysql> desc stddepartment;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptid   | int         | YES  |     | NULL    |       |
+| deptname | varchar(20) | YES  |     | NULL    |       |
+| rollno   | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc employee;
+ERROR 1146 (42S02): Table 'simats.employee' doesn't exist
+mysql> create table employee(empid int(10),empname varchar(20),salary float(20),mobileno int(12));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int         | YES  |     | NULL    |       |
+| empname  | varchar(20) | YES  |     | NULL    |       |
+| salary   | float       | YES  |     | NULL    |       |
+| mobileno | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table empdept(empid int(10),empdeptname varchar(20),empdeptid int(10));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> desc empdept;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| empid       | int         | YES  |     | NULL    |       |
+| empdeptname | varchar(20) | YES  |     | NULL    |       |
+| empdeptid   | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+mysql> drop table student;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create database s;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_simats |
++------------------+
+| empdept          |
+| employee         |
+| faculty          |
+| stddepartment    |
++------------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee add address varchar(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int         | YES  |     | NULL    |       |
+| empname  | varchar(20) | YES  |     | NULL    |       |
+| salary   | float       | YES  |     | NULL    |       |
+| mobileno | int         | YES  |     | NULL    |       |
+| address  | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
