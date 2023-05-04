@@ -1,0 +1,57 @@
+
+mysql> select*from student where stdid between 3 and 6;
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     3 | nandini   | cse     | 10000 |    102 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+4 rows in set (0.01 sec)
+
+mysql> select*from student where stddept in('aids;);
+    '> select*from student where stddept in('aids);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'aids)' at line 2
+mysql> select stdname from student where stddept in('aids');
++---------+
+| stdname |
++---------+
+| puneeth |
++---------+
+1 row in set (0.00 sec)mysql> select*from student where stdid not between 3 and 6;
++-------+---------+---------+-------+--------+
+| stdid | stdname | stddept | fee   | rollno |
++-------+---------+---------+-------+--------+
+|     1 | akshaya | cse     | 10000 |    100 |
+|     2 | teja    | ece     |  9000 |    101 |
++-------+---------+---------+-------+--------+
+2 rows in set (0.00 sec)mysql> select sum(fee) from student where stdid between 1 and 3;
++----------+
+| sum(fee) |
++----------+
+|    29000 |
++----------+
+1 row in set (0.01 sec)mysql> select avg(fee) from student where stddept ="cse";
++------------+
+| avg(fee)   |
++------------+
+| 10333.3333 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(fee) as minimum from student;
++---------+
+| minimum |
++---------+
+|    9000 |
++---------+
+1 row in set (0.01 sec)
+
+mysql> select max(fee) as maximum from student;
++---------+
+| maximum |
++---------+
+|   30000 |
++---------+
+1 row in set (0.00 sec)
