@@ -1,0 +1,71 @@
+mysql> select*from student;
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     1 | akshaya   | cse     | 10000 |    100 |
+|     2 | teja      | ece     |  9000 |    101 |
+|     3 | nandini   | cse     | 10000 |    102 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select*from where fee=10000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where fee=10000' at line 1
+mysql>  select*from student where fee=10000;
++-------+---------+---------+-------+--------+
+| stdid | stdname | stddept | fee   | rollno |
++-------+---------+---------+-------+--------+
+|     1 | akshaya | cse     | 10000 |    100 |
+|     3 | nandini | cse     | 10000 |    102 |
++-------+---------+---------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select*from student where stddept like 'a%';
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+2 rows in set (0.01 sec)
+
+mysql> select*from student where rollno like '-0%';
+Empty set (0.01 sec)
+
+mysql> select*from student where rollno like '%0%';
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     1 | akshaya   | cse     | 10000 |    100 |
+|     2 | teja      | ece     |  9000 |    101 |
+|     3 | nandini   | cse     | 10000 |    102 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select*from student where rollno like '%i';
+Empty set (0.00 sec)
+
+mysql> select*from student where stdname like '%i';
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     3 | nandini   | cse     | 10000 |    102 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql>mysql> select*from student where fee like '___0_';
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     1 | akshaya   | cse     | 10000 |    100 |
+|     3 | nandini   | cse     | 10000 |    102 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
