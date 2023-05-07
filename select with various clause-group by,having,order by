@@ -1,0 +1,36 @@
+mysql> select*from student order by name;
+ERROR 1054 (42S22): Unknown column 'name' in 'order clause'
+mysql>  select*from student order by stdname;
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     1 | akshaya   | cse     | 10000 |    100 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     3 | nandini   | cse     | 10000 |    102 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     2 | teja      | ece     |  9000 |    101 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+6 rows in set (0.01 sec)
+mysql> select*from student group by rollno;
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     1 | akshaya   | cse     | 10000 |    100 |
+|     2 | teja      | ece     |  9000 |    101 |
+|     3 | nandini   | cse     | 10000 |    102 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+6 rows in set (0.01 sec)mysql> select*from student having fee>9000;
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     1 | akshaya   | cse     | 10000 |    100 |
+|     3 | nandini   | cse     | 10000 |    102 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+5 rows in set (0.01 sec)
