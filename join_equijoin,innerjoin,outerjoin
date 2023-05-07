@@ -1,0 +1,127 @@
+
+mysql> create table sdept(deptid int(10),deptname varchar(20),regno int(10));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> insert into sdept values(1,"cse",192211330);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sdept values(2,"ece",192211331);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sdept values(3,"cse",192211332);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from sdept;
++--------+----------+-----------+
+| deptid | deptname | regno     |
++--------+----------+-----------+
+|      1 | cse      | 192211330 |
+|      2 | ece      | 192211331 |
+|      3 | cse      | 192211332 |
++--------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> update sdept set deptname="aero" where regno=192211332;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from sdept;
++--------+----------+-----------+
+| deptid | deptname | regno     |
++--------+----------+-----------+
+|      1 | cse      | 192211330 |
+|      2 | ece      | 192211331 |
+|      3 | aero     | 192211332 |
++--------+----------+-----------+
+3 rows in set (0.00 sec)
+mysql> select deptid,deptname,regno from sdept,student where student.stddept=sdept.deptname;
++--------+----------+-----------+
+| deptid | deptname | regno     |
++--------+----------+-----------+
+|      1 | cse      | 192211330 |
+|      2 | ece      | 192211331 |
+|      1 | cse      | 192211330 |
+|      1 | cse      | 192211330 |
+|      3 | aero     | 192211332 |
++--------+----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select deptid,deptname,regno from sdept,student where student.stddept=sdept.deptname;
++--------+----------+-----------+
+| deptid | deptname | regno     |
++--------+----------+-----------+
+|      1 | cse      | 192211330 |
+|      2 | ece      | 192211331 |
+|      1 | cse      | 192211330 |
+|      1 | cse      | 192211330 |
+|      3 | aero     | 192211332 |
++--------+----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select deptid,deptname,regno from sdept s,student s1 where s1.stddept=s.deptname;
++--------+----------+-----------+
+| deptid | deptname | regno     |
++--------+----------+-----------+
+|      1 | cse      | 192211330 |
+|      2 | ece      | 192211331 |
+|      1 | cse      | 192211330 |
+|      1 | cse      | 192211330 |
+|      3 | aero     | 192211332 |
++--------+----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select deptid,deptname,regno from sdept,student where student.stddept=sdept.deptname;
++--------+----------+-----------+
+| deptid | deptname | regno     |
++--------+----------+-----------+
+|      1 | cse      | 192211330 |
+|      2 | ece      | 192211331 |
+|      1 | cse      | 192211330 |
+|      1 | cse      | 192211330 |
+|      3 | aero     | 192211332 |
++--------+----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select stdid,stdname,stddept,fee from sdept left outer join student on sdept.deptname=student.stddept;
++-------+-----------+---------+-------+
+| stdid | stdname   | stddept | fee   |
++-------+-----------+---------+-------+
+|     4 | bhanu     | cse     | 11000 |
+|     3 | nandini   | cse     | 10000 |
+|     1 | akshaya   | cse     | 10000 |
+|     2 | teja      | ece     |  9000 |
+|     6 | vaishnavi | aero    | 30000 |
++-------+-----------+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select stdid,stdname,stddept,fee from sdept right outer join student on sdept.deptname=student.stddept;
++-------+-----------+---------+-------+
+| stdid | stdname   | stddept | fee   |
++-------+-----------+---------+-------+
+|     1 | akshaya   | cse     | 10000 |
+|     2 | teja      | ece     |  9000 |
+|     3 | nandini   | cse     | 10000 |
+|     4 | bhanu     | cse     | 11000 |
+|     5 | puneeth   | aids    | 10500 |
+|     6 | vaishnavi | aero    | 30000 |
++-------+-----------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> insert into sdept values(4,"mba",192211333);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sdept values(5,"aids",192211334);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select stdid,stdname,stddept,fee from sdept right outer join student on sdept.deptname=student.stddept;
++-------+-----------+---------+-------+
+| stdid | stdname   | stddept | fee   |
++-------+-----------+---------+-------+
+|     1 | akshaya   | cse     | 10000 |
+|     2 | teja      | ece     |  9000 |
+|     3 | nandini   | cse     | 10000 |
+|     4 | bhanu     | cse     | 11000 |
+|     5 | puneeth   | aids    | 10500 |
+|     6 | vaishnavi | aero    | 30000 |
++-------+-----------+---------+-------+
+6 rows in set (0.00 sec)
