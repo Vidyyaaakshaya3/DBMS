@@ -1,0 +1,77 @@
+mysql> select*from student;
++-------+-----------+---------+-------+--------+
+| stdid | stdname   | stddept | fee   | rollno |
++-------+-----------+---------+-------+--------+
+|     1 | akshaya   | cse     | 10000 |    100 |
+|     2 | teja      | ece     |  9000 |    101 |
+|     3 | nandini   | cse     | 10000 |    102 |
+|     4 | bhanu     | cse     | 11000 |    103 |
+|     5 | puneeth   | aids    | 10500 |    104 |
+|     6 | vaishnavi | aero    | 30000 |    105 |
++-------+-----------+---------+-------+--------+
+6 rows in set (0.03 sec)
+
+mysql> select*from fee_view;
+ERROR 1146 (42S02): Table 'simats.fee_view' doesn't exist
+mysql> create view fee_view as select,fee from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',fee from student' at line 1
+mysql> create view fee_view as select rollno,fee from student;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select*from fee_view;
++--------+-------+
+| rollno | fee   |
++--------+-------+
+|    100 | 10000 |
+|    101 |  9000 |
+|    102 | 10000 |
+|    103 | 11000 |
+|    104 | 10500 |
+|    105 | 30000 |
++--------+-------+
+6 rows in set (0.01 sec)
+
+mysql> create index stddept on student(stddept);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from student;
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table   | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| student |          0 | PRIMARY  |            1 | rollno      | A         |           5 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| student |          0 | stdid    |            1 | stdid       | A         |           5 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| student |          1 | stddept  |            1 | stddept     | A         |           4 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+3 rows in set (0.01 sec)
+mysql> create table per(sid int(10) not null auto_increment,stdname varchar(20),stdage int(3),primary key(sid));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> alter table per auto_increment=100;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into per(stdnamr,stdage)values("harshd",19);
+ERROR 1054 (42S22): Unknown column 'stdnamr' in 'field list'
+mysql> insert into per(stdname,stdage)values("harshd",19);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select*from per;
++-----+---------+--------+
+| sid | stdname | stdage |
++-----+---------+--------+
+| 100 | harshd  |     19 |
++-----+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into per(stdname,stdage)values("khan",20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from per;
++-----+---------+--------+
+| sid | stdname | stdage |
++-----+---------+--------+
+| 100 | harshd  |     19 |
+| 101 | khan    |     20 |
++-----+---------+--------+
+2 rows in set (0.00 sec)
